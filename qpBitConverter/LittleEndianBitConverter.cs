@@ -91,88 +91,117 @@ namespace qpwakaba
             bytes[0] = (byte) (value ? 1 : 0);
             return bytes;
         }
-        public bool ToBoolean(byte[] bytes)
+        public bool ToBoolean(byte[] bytes, int offset)
         {
-            return bytes[0] != 0 ? true : false;
+            return bytes[0 + offset] != 0 ? true : false;
         }
-        public char ToChar(byte[] bytes)
+
+        public bool ToBoolean(byte[] b) => ToBoolean(b, 0);
+
+        public char ToChar(byte[] bytes, int offset)
         {
             char value = (char) 0;
             for (int i = 0; i < sizeof(char); ++i)
             {
-                value |= (char) (bytes[i] << (i * 8));
+                value |= (char) (bytes[i + offset] << (i * 8));
             }
             return value;
         }
-        public double ToDouble(byte[] bytes)
+
+        public char ToChar(byte[] b) => ToChar(b, 0);
+
+        public double ToDouble(byte[] bytes, int offset)
         {
             unsafe
             {
-                long l = ToInt64(bytes);
+                long l = ToInt64(bytes, offset);
                 return *(double*) &l;
             }
         }
-        public float ToFloat(byte[] bytes)
+
+        public double ToDouble(byte[] b) => ToDouble(b, 0);
+
+        public float ToFloat(byte[] bytes, int offset)
         {
             unsafe
             {
-                int i = ToInt32(bytes);
+                int i = ToInt32(bytes, offset);
                 return *(float*) &i;
             }
         }
-        public short ToInt16(byte[] bytes)
+
+        public float ToFloat(byte[] b) => ToFloat(b, 0);
+
+        public short ToInt16(byte[] bytes, int offset)
         {
             short value = 0;
             for (int i = 0; i < sizeof(short); ++i)
             {
-                value |= (short) (bytes[i] << (i * 8));
+                value |= (short) (bytes[i + offset] << (i * 8));
             }
             return value;
         }
-        public int ToInt32(byte[] bytes)
+
+        public short ToInt16(byte[] b) => ToInt16(b, 0);
+
+        public int ToInt32(byte[] bytes, int offset)
         {
             int value = 0;
             for (int i = 0; i < sizeof(int); ++i)
             {
-                value |= (int) bytes[i] << (i * 8);
+                value |= (int) bytes[i + offset] << (i * 8);
             }
             return value;
         }
-        public long ToInt64(byte[] bytes)
+
+        public int ToInt32(byte[] b) => ToInt32(b, 0);
+
+        public long ToInt64(byte[] bytes, int offset)
         {
             long value = 0;
             for (int i = 0; i < sizeof(long); ++i)
             {
-                value |=  ((long) bytes[i]) << (i * 8);
+                value |=  ((long) bytes[i + offset]) << (i * 8);
             }
             return value;
         }
-        public ushort ToUInt16(byte[] bytes)
+
+        public long ToInt64(byte[] b) => ToInt64(b, 0);
+
+        public ushort ToUInt16(byte[] bytes, int offset)
         {
             ushort value = 0;
             for (int i = 0; i < sizeof(ushort); ++i)
             {
-                value |= (ushort) (bytes[i] << (i * 8));
+                value |= (ushort) (bytes[i + offset] << (i * 8));
             }
             return value;
         }
-        public uint ToUInt32(byte[] bytes)
+
+        public ushort ToUInt16(byte[] b) => ToUInt16(b, 0);
+
+        public uint ToUInt32(byte[] bytes, int offset)
         {
             uint value = 0;
             for (int i = 0; i < sizeof(uint); ++i)
             {
-                value |= (uint) bytes[i] << (i * 8);
+                value |= (uint) bytes[i + offset] << (i * 8);
             }
             return value;
         }
-        public ulong ToUInt64(byte[] bytes)
+
+        public uint ToUInt32(byte[] b) => ToUInt32(b, 0);
+
+        public ulong ToUInt64(byte[] bytes, int offset)
         {
             ulong value = 0;
             for (int i = 0; i < sizeof(ulong); ++i)
             {
-                value |= ((ulong) bytes[i]) << (i * 8);
+                value |= ((ulong) bytes[i + offset]) << (i * 8);
             }
             return value;
         }
+
+        public ulong ToUInt64(byte[] b) => ToUInt64(b, 0);
     }
 }
