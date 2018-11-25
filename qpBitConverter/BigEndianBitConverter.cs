@@ -116,8 +116,8 @@ namespace qpwakaba
         {
             unsafe
             {
-                long l = ToInt32(bytes);
-                return *(byte*) &l;
+                int i = ToInt32(bytes);
+                return *(float*) &i;
             }
         }
         public short ToInt16(byte[] bytes)
