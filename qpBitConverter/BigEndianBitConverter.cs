@@ -272,5 +272,159 @@ namespace qpwakaba
         }
 
         public ulong ToUInt64(byte[] b) => ToUInt64(b, 0);
+
+#if SPAN_USABLE
+        public void WriteBytes(long value, Span<byte> to){
+            for (int i = sizeof(long) - 1; i >= 0; --i)
+            {
+                to[sizeof(long) - i - 1] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(int value, Span<byte> to)
+        {
+            for (int i = sizeof(int) - 1; i >= 0; --i)
+            {
+                to[sizeof(int) - i - 1] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(short value, Span<byte> to)
+        {
+            for (int i = sizeof(short) - 1; i >= 0; --i)
+            {
+                to[sizeof(short) - i - 1] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(ulong value, Span<byte> to)
+        {
+            for (int i = sizeof(ulong) - 1; i >= 0; --i)
+            {
+                to[sizeof(ulong) - i - 1] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(uint value, Span<byte> to)
+        {
+            for (int i = sizeof(uint) - 1; i >= 0; --i)
+            {
+                to[sizeof(uint) - i - 1] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(ushort value, Span<byte> to)
+        {
+            for (int i = sizeof(ushort) - 1; i >= 0; --i)
+            {
+                to[sizeof(ushort) - i - 1] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(double value, Span<byte> to)
+        {
+            unsafe
+            {
+                var ptr = (long*) &value;
+                WriteBytes(*ptr, to);
+            }
+        }
+        public void WriteBytes(float value, Span<byte> to)
+        {
+            unsafe
+            {
+                var ptr = (int*) &value;
+                WriteBytes(*ptr, to);
+            }
+        }
+        public void WriteBytes(char value, Span<byte> to)
+        {
+            for (int i = sizeof(char) - 1; i >= 0; --i)
+            {
+                to[sizeof(char) - i - 1] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(bool value, Span<byte> to)
+        {
+            to[0] = (byte) (value ? 1 : 0);
+        }
+        public long ToInt64(Span<byte> bytes)
+        {
+            long value = 0;
+            for (int i = sizeof(long) - 1; i >= 0; --i)
+            {
+                value |= ((long) bytes[sizeof(long) - i - 1]) << (i * 8);
+            }
+            return value;
+        }
+        public int ToInt32(Span<byte> bytes)
+        {
+            int value = 0;
+            for (int i = sizeof(int) - 1; i >= 0; --i)
+            {
+                value |= (int) bytes[sizeof(int) - i - 1] << (i * 8);
+            }
+            return value;
+        }
+        public short ToInt16(Span<byte> bytes)
+        {
+            short value = 0;
+            for (int i = sizeof(short) - 1; i >= 0; --i)
+            {
+                value |= (short) (bytes[sizeof(short) - i - 1] << (i * 8));
+            }
+            return value;
+        }
+        public ulong ToUInt64(Span<byte> bytes)
+        {
+            ulong value = 0;
+            for (int i = sizeof(ulong) - 1; i >= 0; --i)
+            {
+                value |= ((ulong) bytes[sizeof(ulong) - i - 1]) << (i * 8);
+            }
+            return value;
+        }
+        public uint ToUInt32(Span<byte> bytes)
+        {
+            uint value = 0;
+            for (int i = sizeof(uint) - 1; i >= 0; --i)
+            {
+                value |= (uint) bytes[sizeof(uint) - i - 1] << (i * 8);
+            }
+            return value;
+        }
+        public ushort ToUInt16(Span<byte> bytes)
+        {
+            ushort value = 0;
+            for (int i = sizeof(ushort) - 1; i >= 0; --i)
+            {
+                value |= (ushort) (bytes[sizeof(ushort) - i - 1] << (i * 8));
+            }
+            return value;
+        }
+        public double ToDouble(Span<byte> bytes)
+        {
+            unsafe
+            {
+                long l = ToInt64(bytes);
+                return *(double*) &l;
+            }
+        }
+        public float ToFloat(Span<byte> bytes)
+        {
+            unsafe
+            {
+                int i = ToInt32(bytes);
+                return *(float*) &i;
+            }
+        }
+        public char ToChar(Span<byte> bytes)
+        {
+            char value = (char) 0;
+            for (int i = sizeof(char) - 1; i >= 0; --i)
+            {
+                value |= (char) (bytes[sizeof(char) - i - 1] << (i * 8));
+            }
+            return value;
+        }
+        public bool ToBoolean(Span<byte> bytes)
+        {
+            return bytes[0] != 0 ? true : false;
+        }
+#endif
     }
 }

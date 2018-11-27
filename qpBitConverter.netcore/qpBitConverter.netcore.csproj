@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>qpwakaba</RootNamespace>
+    <DefineConstants>SPAN_USABLE</DefineConstants>
+
+    <Company>qpwakaba</Company>
+    <AssemblyTitle>qpBitConverter</AssemblyTitle>
+    <Copyright>NYSL Version 0.9982</Copyright>
+    <AssemblyVersion>1.1</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../qpBitConverter/*.cs"></Compile>
+  </ItemGroup>
+  
+</Project>
