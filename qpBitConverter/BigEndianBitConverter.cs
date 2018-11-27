@@ -91,6 +91,75 @@ namespace qpwakaba
             bytes[0] = (byte) (value ? 1 : 0);
             return bytes;
         }
+        public void WriteBytes(long value, byte[] to, int offset)
+        {
+            for (int i = sizeof(long) - 1; i >= 0; --i)
+            {
+                to[sizeof(long) - i - 1 + offset] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(int value, byte[] to, int offset)
+        {
+            for (int i = sizeof(int) - 1; i >= 0; --i)
+            {
+                to[sizeof(int) - i - 1 + offset] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(short value, byte[] to, int offset)
+        {
+            for (int i = sizeof(short) - 1; i >= 0; --i)
+            {
+                to[sizeof(short) - i - 1 + offset] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(ulong value, byte[] to, int offset)
+        {
+            for (int i = sizeof(ulong) - 1; i >= 0; --i)
+            {
+                to[sizeof(ulong) - i - 1 + offset] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(uint value, byte[] to, int offset)
+        {
+            for (int i = sizeof(uint) - 1; i >= 0; --i)
+            {
+                to[sizeof(uint) - i - 1 + offset] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(ushort value, byte[] to, int offset)
+        {
+            for (int i = sizeof(ushort) - 1; i >= 0; --i)
+            {
+                to[sizeof(ushort) - i - 1 + offset] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(double value, byte[] to, int offset)
+        {
+            unsafe
+            {
+                var ptr = (long*) &value;
+                WriteBytes(*ptr, to, offset);
+            }
+        }
+        public void WriteBytes(float value, byte[] to, int offset)
+        {
+            unsafe
+            {
+                var ptr = (int*) &value;
+                WriteBytes(*ptr, to, offset);
+            }
+        }
+        public void WriteBytes(char value, byte[] to, int offset)
+        {
+            for (int i = sizeof(char) - 1; i >= 0; --i)
+            {
+                to[sizeof(char) - i - 1 + offset] = (byte) (value >> (i * 8));
+            }
+        }
+        public void WriteBytes(bool value, byte[] to, int offset)
+        {
+            to[offset] = (byte) (value ? 1 : 0);
+        }
         public bool ToBoolean(byte[] bytes, int offset)
         {
             return bytes[0 + offset] != 0 ? true : false;

@@ -12,6 +12,16 @@ namespace qpwakaba
         byte[] GetBytes(float f);
         byte[] GetBytes(char c);
         byte[] GetBytes(bool b);
+        void WriteBytes(long l, byte[] to, int offset);
+        void WriteBytes(int i, byte[] to, int offset);
+        void WriteBytes(short s, byte[] to, int offset);
+        void WriteBytes(ulong l, byte[] to, int offset);
+        void WriteBytes(uint i, byte[] to, int offset);
+        void WriteBytes(ushort s, byte[] to, int offset);
+        void WriteBytes(double d, byte[] to, int offset);
+        void WriteBytes(float f, byte[] to, int offset);
+        void WriteBytes(char c, byte[] to, int offset);
+        void WriteBytes(bool b, byte[] to, int offset);
 
         long ToInt64(byte[] b);
         long ToInt64(byte[] b, int offset);
