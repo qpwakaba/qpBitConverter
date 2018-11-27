@@ -3,12 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qpBitConverter", "qpBitConverter\qpBitConverter.csproj", "{B43A7A4E-51D0-4A30-9007-6FBC50C916E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "qpBitConverter", "qpBitConverter\qpBitConverter.csproj", "{B43A7A4E-51D0-4A30-9007-6FBC50C916E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F7B74EE9-2A57-4E87-A683-2721D1BFD8BC}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qpBitConverter.netcore", "qpBitConverter.netcore\qpBitConverter.netcore.csproj", "{82F7B6E4-86EA-4883-AD54-D93BDCBCD1DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,10 @@ Global
 		{B43A7A4E-51D0-4A30-9007-6FBC50C916E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B43A7A4E-51D0-4A30-9007-6FBC50C916E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B43A7A4E-51D0-4A30-9007-6FBC50C916E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F7B6E4-86EA-4883-AD54-D93BDCBCD1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F7B6E4-86EA-4883-AD54-D93BDCBCD1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F7B6E4-86EA-4883-AD54-D93BDCBCD1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F7B6E4-86EA-4883-AD54-D93BDCBCD1DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
