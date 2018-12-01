@@ -6,6 +6,10 @@ namespace qpwakaba
 {
     public class LittleEndianBitConverter : IBitConverter
     {
+        private static readonly LittleEndianBitConverter Instance = new LittleEndianBitConverter();
+        private LittleEndianBitConverter() { }
+        public static LittleEndianBitConverter GetInstance() => Instance;
+
         public byte[] GetBytes(long value)
         {
             byte[] bytes = new byte[sizeof(long)];

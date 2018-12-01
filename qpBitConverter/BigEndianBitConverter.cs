@@ -6,6 +6,10 @@ namespace qpwakaba
 {
     public class BigEndianBitConverter : IBitConverter
     {
+        private static readonly BigEndianBitConverter Instance = new BigEndianBitConverter();
+        private BigEndianBitConverter() { }
+        public static BigEndianBitConverter GetInstance() => Instance;
+
         public byte[] GetBytes(long value)
         {
             byte[] bytes = new byte[sizeof(long)];
